@@ -1,0 +1,27 @@
+# 2. jidla_cz.csv - расширенная база данных продуктов
+name,calories,protein,fat,carbs,meal_times,tags
+Kuřecí prsa,500,90,9.6,0,lunch|dinner,high_protein|meat
+Rýže,300,5.7,0.9,70,lunch|dinner|snack,vegan|gluten_free
+Brokolice,55,3.7,0.6,11,lunch|dinner|snack,vegan|low_cal
+Olivový olej,119,0,13.5,0,lunch|dinner,vegan|fat_source
+Jablko,95,0.3,0.2,25,breakfast|snack,vegan|fruit
+Vejce,78,6,5,0.6,breakfast|lunch,vegetarian|high_protein
+Ovesná kaše,220,8,4,38,breakfast,vegetarian|whole_grain
+Tvaroh,150,20,4,6,breakfast|snack,vegetarian|high_protein
+Jogurt bílý,120,8,5,10,breakfast|snack,vegetarian
+Losos,415,40,27,0,lunch|dinner,fish|omega3
+Avokádo,160,2,15,9,breakfast|lunch|dinner|snack,vegan|healthy_fat
+Mandle,575,21,49,22,snack,vegan|nuts|high_fat
+Banán,89,1.1,0.3,23,breakfast|snack,vegan|fruit|energy
+Cizrna,164,9,2.6,27,lunch|dinner,vegan|high_protein|legume
+Čočka,116,9,0.4,20,lunch|dinner,vegan|high_protein|legume
+Tofu,76,8,4.8,1.9,lunch|dinner,vegan|vegetarian|high_protein
+Mrkev,41,0.9,0.2,10,lunch|dinner|snack,vegan|vegetable|low_cal
+Špenát,23,2.9,0.4,3.6,lunch|dinner,vegan|vegetable|low_cal|iron
+Batát,86,1.6,0.1,20,lunch|dinner,vegan|vegetable|complex_carb
+Quinoa,120,4.4,1.9,21,lunch|dinner,vegan|gluten_free|high_protein
+Ořechy vlašské,654,15,65,14,snack,vegan|nuts|omega3
+Mléko polotučné,50,3.4,1.8,4.7,breakfast|snack,vegetarian|dairy
+Sýr cottage,98,11,4.3,3.4,breakfast|lunch|snack,vegetarian|high_protein
+Tuňák ve vlastní šťávě,116,26,1,0,lunch|dinner,fish|high_protein
+Krůtí prsa,135,30,1,0,lunch|dinner,meat|high_protein|low_fat

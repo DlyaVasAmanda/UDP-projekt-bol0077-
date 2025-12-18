@@ -1,0 +1,33 @@
+┌─────────────────┐
+│  VSTUP:         │
+│ - Seznam potravin│
+│ - Nutriční cíle │
+│ - Omezení       │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Výpočet skóre   │
+│ pro každou      │
+│ potravinu       │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Seřazení podle  │
+│ skóre (sestupně)│
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Výběr potravin  │
+│ s kontrolou     │
+│ limitů          │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│  VÝSTUP:        │
+│ - Optimální     │
+│   výběr potravin│
+└─────────────────┘

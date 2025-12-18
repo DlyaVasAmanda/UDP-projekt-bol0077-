@@ -1,0 +1,179 @@
+
+```txt
+# 7. diagramy.txt 
+=== UML DIAGRAMY PRO PLÁNOVAČ JÍDELNÍČKU ===
+
+1. DIAGRAM TŘÍD (CLASS DIAGRAM)
+
+┌─────────────────────────────────────────────────────────┐
+│                      FoodItem                           │
+├─────────────────────────────────────────────────────────┤
+│ - name: String                                          │
+│ - calories: Integer                                     │
+│ - protein: Float                                        │
+│ - fat: Float                                            │
+│ - carbs: Float                                          │
+│ - meal_times: Set<String>                               │
+│ - tags: Set<String>                                     │
+├─────────────────────────────────────────────────────────┤
+│ + __repr__(): String                                    │
+│ + get_nutrient_value(nutrient: String): Float           │
+└─────────────────────────────────────────────────────────┘
+                               △
+                               │
+                               │
+┌─────────────────────────────────────────────────────────┐
+│                      MealPlan                           │
+├─────────────────────────────────────────────────────────┤
+│ - breakfast: List<FoodItem>                             │
+│ - lunch: List<FoodItem>                                 │
+│ - dinner: List<FoodItem>                                │
+│ - snacks: List<FoodItem>                                │
+├─────────────────────────────────────────────────────────┤
+│ + all_items(): List<FoodItem>                           │
+│ + totals(): Dict<String, Float>                         │
+│ + __repr__(): String                                    │
+└─────────────────────────────────────────────────────────┘
+                               △
+                               │
+                               │
+┌─────────────────────────────────────────────────────────┐
+│                   MealPlanBuilder                       │
+├─────────────────────────────────────────────────────────┤
+│ - _breakfast: List<FoodItem>                            │
+│ - _lunch: List<FoodItem>                                │
+│ - _dinner: List<FoodItem>                               │
+│ - _snacks: List<FoodItem>                               │
+│ - _slot_caps: Dict<String, Tuple<Integer, Integer>>     │
+├─────────────────────────────────────────────────────────┤
+│ + set_slot_limits(slot: String, min: Int, max: Int)     │
+│ + add_to_slot(slot: String, item: FoodItem)             │
+│ + add_breakfast(item: FoodItem)                         │
+│ + add_lunch(item: FoodItem)                             │
+│ + add_dinner(item: FoodItem)                            │
+│ + add_snack(item: FoodItem)                             │
+│ + build(): MealPlan                                     │
+└─────────────────────────────────────────────────────────┘
+                               △
+                               │
+                               │
+┌─────────────────────────────────────────────────────────┐
+│                    MealOptimizer                        │
+├─────────────────────────────────────────────────────────┤
+│ + knapsack_optimize(...): List<FoodItem>                │
+│ + distribute_to_slots(...): Dict<String, List<FoodItem>>│
+└─────────────────────────────────────────────────────────┘
+
+┌─────────────────────────────────────────────────────────┐
+│                     Funkce                              │
+├─────────────────────────────────────────────────────────┤
+│ + filter_items(...): List<FoodItem>                     │
+│ + compose_predicates(...): Predicate                    │
+│ + by_meal_time(...): Predicate                          │
+│ + by_tag(...): Predicate                                │
+│ + not_tag(...): Predicate                               │
+│ + max_nutrient(...): Predicate                          │
+│ + min_nutrient(...): Predicate                          │
+│ + load_foods(...): List<FoodItem>                       │
+│ + find_optimal_plan(...): MealPlan                      │
+└─────────────────────────────────────────────────────────┘
+
+2. DIAGRAM SEKVENCÍ (SEQUENCE DIAGRAM)
+
+Uživatel          UI           MealOptimizer    MealPlanBuilder    CSV
+   │               │                  │                │            │
+   │ 1. Zvolí cíle │                  │                │            │
+   │──────────────▶│                  │                │            │
+   │               │ 2. Načte data    │                │            │
+   │               │───────────────────────────────────────────────▶│
+   │               │                  │                │            │
+   │               │◀───────────────────────────────────────────────│
+   │               │ 3. Filtruje      │                │            │
+   │               │─────────────────▶│                │            │
+   │               │                  │                │            │
+   │               │◀─────────────────│                │            │
+   │               │ 4. Optimalizuje  │                │            │
+   │               │─────────────────▶│                │            │
+   │               │                  │ 5. Sestaví plán│            │
+   │               │                  │───────────────▶│            │
+   │               │                  │                │            │
+   │               │◀─────────────────│◀───────────────│            │
+   │               │ 6. Zobrazí výsledek               │            │
+   │◀──────────────│                  │                │            │
+
+3. VÝVOJOVÝ DIAGRAM ALGORITMU (FLOWCHART)
+
+┌─────────────────┐
+│   START         │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Načti potraviny │
+│   z CSV         │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Získej cíle     │
+│   od uživatele  │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Pro každou      │
+│ potravinu:      │
+│ 1. Vypočítej    │
+│    skóre        │
+│ 2. Seřaď        │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Výběr potravin: │
+│                 │
+│ WHILE (místo)   │
+│   AND (limity)  │
+│   AND (cíle)    │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Rozděl do slotů │
+│ podle meal_times│
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Vytvoř plán     │
+│ pomocí Builderu │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│ Validuj plán    │
+│ proti cílům     │
+└────────┬────────┘
+         │
+         ▼
+┌─────────────────┐
+│   VÝSTUP        │
+│   (MealPlan)    │
+└─────────────────┘
+
+4. USE CASE DIAGRAM
+
+┌─────────────────┐     ┌─────────────────┐
+│    Uživatel     │────▶│ Nastavit cíle   │
+└─────────────────┘     └─────────────────┘
+         │                       │
+         │                       ▼
+         │              ┌─────────────────┐
+         │─────────────▶│ Vygenerovat     │
+         │              │ jídelníček      │
+         │              └─────────────────┘
+         │                       │
+         │                       ▼
+         │              ┌─────────────────┐
+         └─────────────▶│ Zobrazit výsledek│
+                        └─────────────────┘
